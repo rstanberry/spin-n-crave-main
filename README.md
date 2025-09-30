@@ -1,73 +1,153 @@
-# Welcome to your Lovable project
+# Spin & Crave
 
-## Project info
+Spin & Crave is a small Vite + React + TypeScript demo app that lets users spin a wheel to pick a food category, then shows nearby restaurants and ordering links. It uses Tailwind CSS and a shadcn-style component set.
 
-**URL**: https://lovable.dev/projects/2ab3201f-c01a-4d92-ac63-c63ff570a2be
+This README follows common GitHub conventions and explains how to get the project running locally, how to build and preview a production bundle, and how to contribute.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Table of contents
 
-**Use Lovable**
+- [Requirements](#requirements)
+- [Quick start](#quick-start)
+- [Available scripts](#available-scripts)
+- [Development notes](#development-notes)
+- [Deploying / Previewing production build](#deploying--previewing-production-build)
+- [Architecture & key files](#architecture--key-files)
+- [Contributing](#contributing)
+- [License](#license)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2ab3201f-c01a-4d92-ac63-c63ff570a2be) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Requirements
 
-**Use your preferred IDE**
+- Node.js 18+ (recommended via nvm)
+- npm (bundled with Node) or pnpm if you prefer
+- A modern browser (Chrome, Firefox, Safari)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Quick start
 
-Follow these steps:
+Clone the repository and install dependencies:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# clone the repo
+git clone <YOUR_REPO_URL>
+cd spin-n-crave-main
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# install dependencies
+npm install
+# or, if you prefer pnpm
+# pnpm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+Start the development server (Vite):
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open http://localhost:8080/ (or the URL printed in your terminal) to view the app with hot reload.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Available scripts
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Run these from the project root.
 
-## What technologies are used for this project?
+- `npm run dev` - Start Vite dev server with hot reload for local development.
+- `npm run build` - Create an optimized production build in the `dist/` folder.
+- `npm run preview` - Serve the production build locally using Vite preview.
+- `npm run lint` - Run ESLint across the repository.
 
-This project is built with:
+Example:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+# build and preview the production bundle
+npm run build
+npm run preview
+# then open the URL printed by the preview command
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/2ab3201f-c01a-4d92-ac63-c63ff570a2be) and click on Share -> Publish.
+## Development notes
 
-## Can I connect a custom domain to my Lovable project?
+- This project uses:
+  - React + TypeScript
+  - Vite for fast development and production builds
+  - Tailwind CSS for styling
+  - shadcn-style UI components in `src/components/ui`
 
-Yes, you can!
+- Key developer entry points:
+  - `src/main.tsx` — App bootstrap
+  - `src/pages/Index.tsx` — Main page and layout
+  - `src/components/SpinWheel.tsx` — The spin wheel component
+  - `src/components/RestaurantResults.tsx` — Restaurant list, pagination, and provider links
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Toasts: `src/hooks/use-toast.ts` exposes `useToast()` and `toast()` helpers used across the UI.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Icons: `lucide-react` is used for lightweight SVG icons.
+
+---
+
+## Deploying / Previewing production build
+
+1. Build the app:
+
+```bash
+npm run build
+```
+
+2. Preview the build locally:
+
+```bash
+npm run preview
+```
+
+3. Deploy the `dist/` folder to any static host (Netlify, Vercel, GitHub Pages, or your preferred CDN). The `index.html` is self-contained and references assets in `dist/`.
+
+---
+
+## Architecture & key files
+
+A short map of important files/folders:
+
+- `index.html` — App HTML template
+- `src/main.tsx` — React entry
+- `src/pages/Index.tsx` — Main page with header and layout
+- `src/components/SpinWheel.tsx` — Wheel UI and spin logic
+- `src/components/RestaurantResults.tsx` — Restaurants UI, pagination, provider links, geolocation
+- `src/hooks/use-toast.ts` — Toast helper used by components
+- `src/index.css` — Tailwind + custom CSS tokens
+- `tailwind.config.ts` — Tailwind configuration
+- `vite.config.ts` — Vite configuration
+
+---
+
+## Contributing
+
+Contributions are welcome. Suggested workflow:
+
+1. Fork the repository on GitHub.
+2. Create a feature branch: `git checkout -b feat/your-feature`.
+3. Make changes and commit with clear messages.
+4. Open a pull request against the `main` branch.
+
+Please run linting and the dev server before opening a PR.
+
+---
+
+## License
+
+This project does not include a license file by default. Add a `LICENSE` file to make the licensing explicit.
+
+---
+
+If you'd like, I can also:
+- Add a `CONTRIBUTING.md` with PR/checklist guidance.
+- Add a GitHub Actions workflow to automatically build and lint PRs.
+- Regenerate `git.log` after you create the initial commit.
+
+If you want any of those, tell me which and I'll add it.
