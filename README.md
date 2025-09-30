@@ -144,10 +144,3 @@ Please run linting and the dev server before opening a PR.
 This project does not include a license file by default. Add a `LICENSE` file to make the licensing explicit.
 
 ---
-
-If you'd like, I can also:
-- Add a `CONTRIBUTING.md` with PR/checklist guidance.
-- Add a GitHub Actions workflow to automatically build and lint PRs.
-- Regenerate `git.log` after you create the initial commit.
-
-If you want any of those, tell me which and I'll add it.
